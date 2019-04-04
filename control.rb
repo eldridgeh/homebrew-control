@@ -14,6 +14,7 @@ class Control < Formula
   def install
     #mkdir_p buildpath/"src/github.com/supergiant/"
     system "cd #{buildpath}"
+    system "which npm"
     system "make", "build-ui"
 
   end
