@@ -13,7 +13,7 @@ class Control < Formula
 
   def install
     #mkdir_p buildpath/"src/github.com/supergiant/"
-    #system "cd #{buildpath}"
+    system "cd #{buildpath}"
     system "make", "build-ui"
 
   end
