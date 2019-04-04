@@ -10,10 +10,11 @@ class Control < Formula
   depends_on "go" => :build
   depends_on "npm"
   depends_on "govendor" => :recommended
-  bin.install_symlink /usr/local/bin/npm
 
-  
+
+
   def install
+    bin.install_symlink /usr/local/bin/npm
     #mkdir_p buildpath/"src/github.com/supergiant/"
     system "cd #{buildpath}"
     system "make", "build-ui"
