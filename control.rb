@@ -8,13 +8,12 @@ class Control < Formula
   sha256 "62166c2b28d5c868bae9ac96f9974bc0836662a70c5e061bab4357bee7ffd078"
   # depends_on "cmake" => :build
   depends_on "go" => :build
-  depends_on "npm" => :build
+  depends_on "npm"
   depends_on "govendor" => :recommended
 
   def install
     #mkdir_p buildpath/"src/github.com/supergiant/"
     system "cd #{buildpath}"
-    system "which npm"
     system "make", "build-ui"
 
   end
