@@ -12,8 +12,8 @@ class Control < Formula
   depends_on "govendor" => :recommended
 
   def install
-    mkdir_p buildpath/"src/github.com/supergiant/"
-    system "cd #{buildpath}"
+    #mkdir_p buildpath/"src/github.com/supergiant/"
+    #system "cd #{buildpath}"
     system "make", "build-ui"
 
   end
