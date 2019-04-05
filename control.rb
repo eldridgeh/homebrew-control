@@ -16,7 +16,7 @@ class Control < Formula
   def install
     #mkdir_p buildpath/"src/github.com/supergiant/"
     system "cd #{buildpath}"
-    system "#{prefix}/etc/bash_completion.d/npm install --prefix ./cmd/ui/assets"
+    system "/usr/local/Cellar/node/11.13.0/libexec/bin/npm install --prefix ./cmd/ui/assets"
     #system "make", "build-ui"
 
   end
