@@ -16,14 +16,18 @@ class Control < Formula
 
   def install
     #mkdir_p buildpath/"src/github.com/supergiant/"
-    system "cd #{buildpath}"
-    system "/usr/local/bin/npm install --prefix ./cmd/ui/assets"
-    system "/usr/local/bin/npm run build:prod --prefix ./cmd/ui/assets"
-    system "/usr/local/opt/go/bin/go get github.com/rakyll/statik"
-    system "statik -src=./cmd/ui/assets/dist"
-    system "GOOS=darwin CGO_ENABLED=0 GOARCH=amd64 /usr/local/opt/go/bin/go build -o dist/controlplane-osx -a -installsuffix cgo -ldflags='-extldflags \"-static\" -w -s -X main.version=${VERSION}' ./cmd/controlplane"
+    ENV["GOPATH"] = buildpath
+    #system "cd #{buildpath}"
+    bin_path = buildpath/"src/github.com/supergiant/control1"
+    bin_path.install Dir["*"]
+    cd bin_path do
+      system "/usr/local/Cellar/node/11.13.0/libexec/bin/npm install --prefix ./cmd/ui/assets"
+      system "/usr/local/Cellar/node/11.13.0/libexec/bin/npm run build:prod --prefix ./cmd/ui/assets"
+      system "/usr/local/opt/go/bin/go get github.com/rakyll/statik"
+      system "statik -src=./cmd/ui/assets/dist"
+      system "GOOS=darwin CGO_ENABLED=0 GOARCH=amd64 /usr/local/opt/go/bin/go build -o dist/controlplane-osx -a -installsuffix cgo -ldflags='-extldflags \"-static\" -w -s -X main.version=${VERSION}' ./cmd/controlplane"
+    end
 
-    #system "make", "build-ui"
 
   end
 
