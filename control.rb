@@ -24,8 +24,8 @@ class Control < Formula
       system "/usr/local/Cellar/node/11.13.0/libexec/bin/npm install --prefix ./cmd/ui/assets"
       system "/usr/local/Cellar/node/11.13.0/libexec/bin/npm run build:prod --prefix ./cmd/ui/assets"
       system "/usr/local/opt/go/bin/go get github.com/rakyll/statik"
-      system "statik -src=./cmd/ui/assets/dist"
-      system "GOOS=darwin CGO_ENABLED=0 GOARCH=amd64 /usr/local/opt/go/bin/go build -o dist/controlplane-osx -a -installsuffix cgo -ldflags='-extldflags \"-static\" -w -s -X main.version=${VERSION}' ./cmd/controlplane"
+      system "#{buildpath}/.brew_home/go/bin/statik -src=./cmd/ui/assets/dist"
+      #system "GOOS=darwin CGO_ENABLED=0 GOARCH=amd64 /usr/local/opt/go/bin/go build -o dist/controlplane-osx -a -installsuffix cgo -ldflags='-extldflags \"-static\" -w -s -X main.version=${VERSION}' ./cmd/controlplane"
     end
 
 
