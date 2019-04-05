@@ -17,8 +17,10 @@ class Control < Formula
   def install
     #mkdir_p buildpath/"src/github.com/supergiant/"
     system "cd #{buildpath}"
-    system "/usr/local/Cellar/node/11.13.0/libexec/bin/npm install --prefix ./cmd/ui/assets"
+    system "/usr/local/bin/npm install --prefix ./cmd/ui/assets"
     system "/usr/local/bin/npm run build:prod --prefix ./cmd/ui/assets"
+    system "/usr/local/bin/statik -src=./cmd/ui/assets/dist"
+    system "GOOS=darwin CGO_ENABLED=0 GOARCH=amd64 go build -o dist/controlplane-osx -a -installsuffix cgo -ldflags='-extldflags "-static" -w -s -X main.version=${VERSION}' ./cmd/controlplane"
 
     #system "make", "build-ui"
 
