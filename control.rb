@@ -9,7 +9,7 @@ class Control < Formula
   # depends_on "cmake" => :build
   depends_on "go" => :build
   depends_on "npm"
-  depends_on "statik"
+  #depends_on "statik"
   depends_on "govendor" => :recommended
 
 
