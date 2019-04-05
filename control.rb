@@ -9,6 +9,7 @@ class Control < Formula
   # depends_on "cmake" => :build
   depends_on "go" => :build
   depends_on "npm"
+  depends_on "statik"
   depends_on "govendor" => :recommended
 
 
@@ -16,7 +17,9 @@ class Control < Formula
   def install
     #mkdir_p buildpath/"src/github.com/supergiant/"
     system "cd #{buildpath}"
-    system "/usr/local/Cellar/node/11.13.0/libexec/bin/npm install --prefix ./cmd/ui/assets"
+    system "#{libexec}/bin/npm install --prefix ./cmd/ui/assets"
+    system "#{libexec}/bin/npm run build --prefix ./cmd/ui/assets"
+    
     #system "make", "build-ui"
 
   end
