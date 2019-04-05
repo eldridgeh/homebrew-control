@@ -19,8 +19,9 @@ class Control < Formula
     system "cd #{buildpath}"
     system "/usr/local/bin/npm install --prefix ./cmd/ui/assets"
     system "/usr/local/bin/npm run build:prod --prefix ./cmd/ui/assets"
-    system "/usr/local/bin/statik -src=./cmd/ui/assets/dist"
-    system "GOOS=darwin CGO_ENABLED=0 GOARCH=amd64 go build -o dist/controlplane-osx -a -installsuffix cgo -ldflags='-extldflags \"-static\" -w -s -X main.version=${VERSION}' ./cmd/controlplane"
+    system "/usr/local/opt/go/bin/go get github.com/rakyll/statik"
+    system "statik -src=./cmd/ui/assets/dist"
+    system "GOOS=darwin CGO_ENABLED=0 GOARCH=amd64 /usr/local/opt/go/bin/go build -o dist/controlplane-osx -a -installsuffix cgo -ldflags='-extldflags \"-static\" -w -s -X main.version=${VERSION}' ./cmd/controlplane"
 
     #system "make", "build-ui"
 
