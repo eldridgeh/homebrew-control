@@ -18,7 +18,7 @@ class Control < Formula
     mkdir_p buildpath/"src/github.com/control"
     system prefix.install Dir["templates/*"]
 
-    system "GOOS=darwin CGO_ENABLED=0 GOARCH=amd64 go build -o dist/controlplane-osx -a -installsuffix cgo -ldflags=\'-extldflags \"-static\" -w -s -X main.version=v2.1.0\' ./cmd/controlplane"
+    system "GOOS=darwin CGO_ENABLED=0 GOARCH=amd64 go build -o dist/controlplane-osx -a -installsuffix cgo ./cmd/controlplane"
     system bin.install "dist/controlplane-osx"
   end
 
