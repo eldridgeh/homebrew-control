@@ -11,7 +11,7 @@ class Control < Formula
   def install
     # ENV.deparallelize  # if your formula fails when building in parallel
     # Remove unrecognized options if warned by configure
-    system "./supergiant
+    system "./supergiant"
   end
 
   test do
