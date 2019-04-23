@@ -16,10 +16,10 @@ class Control < Formula
 
   def install
     mkdir_p buildpath/"src/github.com/control"
-    system "mkdir -p /etc/supergiant/templates"
-    system "cp templates/* /etc/supergiant/templates/"
+    system prefix.install "templates/*"
+
     system "GOOS=darwin CGO_ENABLED=0 GOARCH=amd64 go build -o dist/controlplane-osx -a -installsuffix cgo -ldflags=\'-extldflags \"-static\" -w -s -X main.version=v2.1.0\' ./cmd/controlplane"
-    system "cp dist/controlplane-osx /bin/control"
+    system bin.install "dist/controlplane-osx"
   end
 
   test do
