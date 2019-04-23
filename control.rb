@@ -11,7 +11,7 @@ class Control < Formula
   def install
     # ENV.deparallelize  # if your formula fails when building in parallel
     # Remove unrecognized options if warned by configure
-    system "./supergiant"
+    system "mv supergiant /usr/local/bin/"
   end
 
   test do
@@ -25,5 +25,9 @@ class Control < Formula
     # The installed folder is not in the path, so use the entire path to any
     # executables being tested: `system "#{bin}/program", "do", "something"`.
     system "false"
+  end
+
+  def uninstall
+    system "rm /usr/local/bin/supergiant"
   end
 end
