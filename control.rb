@@ -14,7 +14,7 @@ class Control < Formula
     # Remove unrecognized options if warned by configure
     #bin.install 'supergiant'
     mkdir_p buildpath/"/etc/supergiant/templates/"
-    system "cp templates/*" "/etc/supergiant/templates/"
+    system "cp templates/* /etc/supergiant/templates/"
   end
 
   test do
