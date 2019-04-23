@@ -11,7 +11,7 @@ class Control < Formula
   def install
     # ENV.deparallelize  # if your formula fails when building in parallel
     # Remove unrecognized options if warned by configure
-    system "mv supergiant /usr/local/bin/"
+    bin.install 'supergiant'
   end
 
   test do
@@ -28,6 +28,6 @@ class Control < Formula
   end
 
   def uninstall
-    system "rm /usr/local/bin/supergiant"
+    system "rm {HOMEBREW_PREFIX}/bin/supergiant"
   end
 end
