@@ -7,11 +7,14 @@ class Control < Formula
   url "https://github.com/supergiant/control/releases/download/v2.1.0/supergiant_v2.1.0_Darwin_x86_64.tar.gz"
   sha256 "9a28ed2241f6a3cde5dc5605b076ab9151a94bc914499f5f0ac135acae75b613"
   # depends_on "cmake" => :build
+  head "https://github.com/supergiant/control.git"
 
   def install
     # ENV.deparallelize  # if your formula fails when building in parallel
     # Remove unrecognized options if warned by configure
-    bin.install 'supergiant'
+    #bin.install 'supergiant'
+    mkdir_p buildpath/"/etc/supergiant/templates/"
+    system "cp templates/*" "/etc/supergiant/templates/"
   end
 
   test do
